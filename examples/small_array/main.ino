@@ -1,22 +1,18 @@
 #include <SmallArray.h>
 #include <Arduino.h>
-#include <iostream>
 
-struct ToConv
+struct S
 {
     int a;
-    bool b;
+    int b;
 };
 
-SmallArray<ToConv, 3> smallArray{};
+SmallArray<S, 3> smallArray{{1, 1}, {2, 2}, {3, 3}};
 
 void setup() {
     Serial.begin(115200);
-    delay(2000);
-    smallArray = {ToConv{8, false}, ToConv{6, false}, ToConv{7, false}};
-    SmallArray<ToConv, 3> copy{smallArray};
-    for (auto& el : copy)
-        std::cout << el.a << " " << std::endl;
+    for (auto el : smallArray)
+        Serial.println(el.a);
 }
 
 void loop() {

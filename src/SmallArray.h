@@ -57,6 +57,13 @@ public:
     {
         return array[pos];
     }
+    bool contains(const T& value) const
+    {
+        for (size_t pos = 0; pos < size(); pos++)
+            if (array[pos] == value)
+                return true;
+        return false;
+    }
 
 private:
     T array[N];
