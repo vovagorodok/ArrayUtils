@@ -1,9 +1,9 @@
 # Small Containers
 
-Represents `SmallArray` and `SmallMap` containers.
-Has zero overhead, the same as c array.
-Can be constexpr constructible.
+Represents `SmallArray` and `SmallMap` containers. \
+Has zero overhead, the same as c array. \
+Can be constexpr constructed and used. \
 Can be stored on static mamory or stack.
 
-Added additional `VirtualSmallArray` and `VirtualSmallMap` containers that can hide their sizes.
+Added additional `VirtualSmallArray` and `VirtualSmallMap` containers that can hide their sizes. \
 Has overhead of poiner to virtual table.
