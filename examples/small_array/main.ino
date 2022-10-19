@@ -1,12 +1,22 @@
 #include <SmallArray.h>
 #include <Arduino.h>
 
-SmallArray<int, 3> smallArray{1, 2, 3};
+struct Pin
+{
+    int num;
+    bool activeHigh;
+};
+constexpr Pin createPin(int num)
+{
+    return {num, true};
+}
+
+SmallArray<Pin, 3> smallArray{createPin, 1, 2, 3};
 
 void setup() {
     Serial.begin(115200);
     for (auto el : smallArray)
-        Serial.println(el);
+        Serial.println(el.num);
 }
 
 void loop() {
