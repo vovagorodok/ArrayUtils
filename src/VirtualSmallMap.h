@@ -18,14 +18,14 @@ public:
     }
     const_iterator find(const Key& key) const override
     {
-        for (size_t pos = 0; pos < this->size(); pos++)
+        for (size_t pos = 0; pos < N; pos++)
             if (this->array[pos].key == key)
                 return this->array + pos;
         return this->cend();
     }
     iterator find(const Key& key) override
     {
-        for (size_t pos = 0; pos < this->size(); pos++)
+        for (size_t pos = 0; pos < N; pos++)
             if (this->array[pos].key == key)
                 return this->array + pos;
         return this->end();

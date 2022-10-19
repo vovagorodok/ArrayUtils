@@ -19,7 +19,7 @@ public:
     }
     constexpr bool contains(const T& value) const
     {
-        for (size_t pos = 0; pos < this->size(); pos++)
+        for (size_t pos = 0; pos < N; pos++)
             if (this->array[pos] == value)
                 return true;
         return false;
