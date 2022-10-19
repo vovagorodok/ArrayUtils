@@ -7,10 +7,10 @@ class VirtualSmallArray : public VirtualSmallArrayBase<T, N>,
                           public AbstractArray<T>
 {
 public:
+    using VirtualSmallArrayBase<T, N>::VirtualSmallArrayBase;
     using Base = AbstractArray<T>;
     using reference = typename Base::reference;
     using const_reference = typename Base::const_reference;
-    using VirtualSmallArrayBase<T, N>::VirtualSmallArrayBase;
 
     const_reference operator[](size_t pos) const override
     {
