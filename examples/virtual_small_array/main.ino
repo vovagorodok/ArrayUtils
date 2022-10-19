@@ -4,7 +4,7 @@
 VirtualSmallArray<int, 3> smallArray{1, 2, 3};
 
 void print(const AbstractArray<int>& array) {
-    for (const auto& : array)
+    for (const auto& el : array)
         Serial.println(el);
 }
 
