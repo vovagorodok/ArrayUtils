@@ -5,4 +5,4 @@ Has zero overhead, the same as c array.
 Can be stored on static mamory or stack.
 
 Added additional `VirtualSmallArray` and `VirtualSmallMap` containers that can hide their sizes.
-Has overhead of c array plus poiner to virtual table.
+Has overhead of poiner to virtual table.
