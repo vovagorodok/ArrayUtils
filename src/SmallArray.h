@@ -5,9 +5,9 @@ template <typename T, size_t N>
 class SmallArray : public SmallArrayBase<T, N>
 {
 public:
+    using SmallArrayBase<T, N>::SmallArrayBase;
     using reference = T&;
     using const_reference = const T&;
-    using SmallArrayBase<T, N>::SmallArrayBase;
 
     constexpr const_reference operator[](size_t pos) const
     {
