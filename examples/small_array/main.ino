@@ -11,15 +11,15 @@ constexpr Pin createPin(uint8_t num)
     return {num, OUTPUT};
 }
 
-SmallArray<Pin, 3> smallArray{createPin, 2, 4, 5};
+SmallArray<Pin, 3> pins{createPin, 2, 4, 5};
 
 void setup() {
     Serial.begin(115200);
-    for (const auto& el : smallArray)
+    for (const Pin& pin : pins)
     {
-        Serial.println(el.num);
-        pinMode(el.num, el.mode);
-        digitalWrite(el.num, HIGH);
+        Serial.println(pin.num);
+        pinMode(pin.num, pin.mode);
+        digitalWrite(pin.num, HIGH);
     }
 }
 
