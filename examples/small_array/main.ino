@@ -3,20 +3,24 @@
 
 struct Pin
 {
-    int num;
-    bool activeHigh;
+    uint8_t num;
+    uint8_t mode;
 };
-constexpr Pin createPin(int num)
+constexpr Pin createPin(uint8_t num)
 {
-    return {num, true};
+    return {num, OUTPUT};
 }
 
-SmallArray<Pin, 3> smallArray{createPin, 1, 2, 3};
+SmallArray<Pin, 3> smallArray{createPin, 2, 4, 5};
 
 void setup() {
     Serial.begin(115200);
-    for (auto el : smallArray)
+    for (const auto& el : smallArray)
+    {
         Serial.println(el.num);
+        pinMode(el.num, el.mode);
+        digitalWrite(el.num, HIGH);
+    }
 }
 
 void loop() {
