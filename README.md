@@ -1,7 +1,7 @@
 # Small Containers
 
 Represents `SmallArray` and `SmallMap` containers. \
-Has zero overhead, the same as c array. \
+Has zero overhead and the same size as c array. \
 Can be constexpr constructed, converted and used. \
 Can be stored on static mamory or stack.
 
