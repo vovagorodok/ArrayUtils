@@ -1,12 +1,6 @@
 #pragma once
 #include "SmallArrayBase.h"
-
-template <typename K, typename V>
-struct MapPair
-{
-    K key;
-    V value;
-};
+#include "MapPair.h"
 
 template <typename Key, typename Value, size_t N>
 class SmallMap : public SmallArrayBase<MapPair<Key, Value>, N>
