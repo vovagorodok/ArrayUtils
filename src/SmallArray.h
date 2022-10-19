@@ -1,9 +1,13 @@
 #pragma once
+#include <initializer_list>
 
 template <typename T, size_t N>
 class SmallArray
 {
 public:
+    using iterator = T*;
+    using const_iterator = const T*;
+
     constexpr SmallArray() = default;
     constexpr SmallArray(const SmallArray& other) = default;
     constexpr SmallArray(SmallArray&& other) = default;
@@ -18,30 +22,51 @@ public:
     constexpr SmallArray(Converter&& converter, OtherT&& arg, OtherTypes&&... args) :
         array{converter(arg), converter(args)...}
     {}
-    SmallArray& operator=(const SmallArray& other) = default;
-    SmallArray& operator=(SmallArray&& other) = default;
+    inline SmallArray(std::initializer_list<T> list) :
+        array{}
+    {
+        size_t pos = 0;
+        for (const T& el: list)
+        {
+            array[pos] = el;
+            pos++;
+        }
+    }
+    template<typename Converter, typename OtherT>
+    inline SmallArray(Converter&& converter, std::initializer_list<OtherT> list) :
+        array{}
+    {
+        size_t pos = 0;
+        for (const OtherT& el: list)
+        {
+            array[pos] = converter(el);
+            pos++;
+        }
+    }
+    inline SmallArray& operator=(const SmallArray& other) = default;
+    inline SmallArray& operator=(SmallArray&& other) = default;
 
-    constexpr T* cbegin() const
+    constexpr const_iterator cbegin() const
     {
         return array;
     }
-    constexpr T* begin() const
+    constexpr const_iterator begin() const
     {
         return array;
     }
-    T* begin()
+    inline iterator begin()
     {
         return array;
     }
-    constexpr T* cend() const
+    constexpr const_iterator cend() const
     {
         return array + N;
     }
-    constexpr T* end() const
+    constexpr const_iterator end() const
     {
         return array + N;
     }
-    T* end()
+    inline iterator end()
     {
         return array + N;
     }
@@ -53,11 +78,11 @@ public:
     {
         return array[pos];
     }
-    T& operator[](size_t pos)
+    inline T& operator[](size_t pos)
     {
         return array[pos];
     }
-    bool contains(const T& value) const
+    constexpr bool contains(const T& value) const
     {
         for (size_t pos = 0; pos < size(); pos++)
             if (array[pos] == value)
