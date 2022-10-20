@@ -1,5 +1,6 @@
 #pragma once
 #include <initializer_list>
+#include <stddef.h>
 
 template <typename T, size_t N>
 class ConstructibleArray
