@@ -1,9 +1,8 @@
 # Small Containers
-
-Represents `SmallArray` and `SmallMap` containers. \
-Have zero memory overhead and the same size as c array. \
-Can be constexpr constructed, converted and used. \
-Can be stored on static mamory or stack.
-
-Added additional `VirtualSmallArray/AbstractArray` and `VirtualSmallMap/AbstractMap` containers that can hide their sizes using abstract interface. \
-Have memory overhead of poiner to virtual table.
+ 
+Function `makeArray` to create array of complex types. \
+Function `makeMap` to create `SmallMap` (array of pairs). \
+Allows constexpr construction. \
+Has all advanteges as `std::array`:
+- Zero memory overhead and the same size as c array
+- Can be stored on static mamory or stack
