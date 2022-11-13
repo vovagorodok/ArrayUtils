@@ -1,15 +1,13 @@
 #pragma once
-#include "SmallArrayBase.h"
-#include "MapPair.h"
+#include <array>
+#include <utility>
 
 template <typename Key, typename Value, size_t N>
-class SmallMap : public SmallArrayBase<MapPair<Key, Value>, N>
+struct SmallMap
 {
-public:
-    using SmallArrayBase<MapPair<Key, Value>, N>::SmallArrayBase;
-    using Base = SmallArrayBase<MapPair<Key, Value>, N>;
-    using iterator = typename Base::iterator;
-    using const_iterator = typename Base::const_iterator;
+    using type = std::pair<Key, Value>;
+    using iterator = typename std::array<type, N>::iterator;
+    using const_iterator = typename std::array<type, N>::const_iterator;
 
     constexpr bool contains(const Key& key) const
     {
@@ -17,16 +15,46 @@ public:
     }
     constexpr const_iterator find(const Key& key) const
     {
-        for (size_t pos = 0; pos < N; pos++)
-            if (this->array[pos].key == key)
-                return this->array + pos;
-        return this->cend();
+        for (auto it = cbegin(); it != cend(); it ++)
+            if (it->first == key)
+                return it;
+        return cend();
     }
     inline iterator find(const Key& key)
     {
-        for (size_t pos = 0; pos < N; pos++)
-            if (this->array[pos].key == key)
-                return this->array + pos;
-        return this->end();
+        for (auto it = begin(); it != end(); it ++)
+            if (it->first == key)
+                return it;
+        return end();
     }
+    constexpr const_iterator cbegin() const
+    {
+        return array.cbegin();
+    }
+    constexpr const_iterator begin() const
+    {
+        return array.begin();
+    }
+    inline iterator begin()
+    {
+        return array.begin();
+    }
+    constexpr const_iterator cend() const
+    {
+        return array.cend();
+    }
+    constexpr const_iterator end() const
+    {
+        return array.end();
+    }
+    inline iterator end()
+    {
+        return array.end();
+    }
+    constexpr size_t size() const
+    {
+        return array.size();
+    }
+
+    std::array<type, N> array;
 };
