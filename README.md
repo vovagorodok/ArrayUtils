@@ -10,7 +10,7 @@ Function `find()` to find in array of pairs.
 Array of pairs advanteges:
 - Zero memory overhead and the same size as `std::array`
 - Can be stored on static mamory or stack
-- Linear search is ~3x faster than `std::maps` for number of elements
+- Linear search is ~3x faster than `std::maps` for small number of elements
 - Doesn't require `operator<` or hash
 
 Recommended to replace `std::map` when number of elements is less than 15.
