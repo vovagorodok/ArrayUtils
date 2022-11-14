@@ -1,15 +1,15 @@
-#include <MakeMap.h>
+#include <ArrayUtils.h>
 #include <Arduino.h>
 
-auto smallMap{makeMap<int, int, 3>({{1, 2}, {3, 4}, {5, 6}})};
+auto arrayOfPairs = makeArrayOfPairs<int, int, 3>({{1, 2}, {3, 4}, {5, 6}});
 
 void setup() {
     Serial.begin(115200);
-    for (const auto& el : smallMap)
+    for (const auto& el : arrayOfPairs)
         Serial.println(el.first);
 
-    auto found = smallMap.find(3);
-    if (found != smallMap.end())
+    auto found = find(arrayOfPairs, 3);
+    if (found != arrayOfPairs.end())
         Serial.println(found->second);
 }
 

@@ -1,4 +1,4 @@
-#include <MakeArray.h>
+#include <ArrayUtils.h>
 #include <Arduino.h>
 
 struct Pin
@@ -11,7 +11,7 @@ constexpr Pin createPin(uint8_t num)
     return {num, OUTPUT};
 }
 
-auto outputs{makeArray<Pin, 3>(createPin, 2, 4, 5)};
+auto outputs = makeArray<Pin, 3>(createPin, 2, 4, 5);
 
 void setup() {
     Serial.begin(115200);

@@ -1,10 +1,19 @@
-# Small Container Utils
- 
-Function `makeArray` to create array of complex types. \
-Function `makeMap` to create `SmallMap` (array of pairs). \
-Allows constexpr construction. \
-Has all advanteges as `std::array`:
-- Zero memory overhead and the same size as c array
-- Can be stored on static mamory or stack
+# Array Utils
 
-Requires STL and c++14
+Allows constexpr construction by: \
+Function `makeArray()` to create array of types with complex constructions. \
+Function `makeArrayOfPairs()` to create map like arrays. \
+
+Allows search: \
+Function `find` to find in array of pairs.
+
+Array of pairs advanteges:
+- Zero memory overhead and the same size as `std::array`
+- Can be stored on static mamory or stack
+- Linear search is ~3x faster than `std::maps` with ~5 elements
+- Doesn't require `operator<` or hash
+
+Recommended to replace `std::map` when number of elements is less than 15. When number of elements is greater than 1000.
+Prepared tests: https://quick-bench.com/q/4NqPWuZZISW9XAKvhiQQJAIvGLc
+
+Library requires STL and c++14
