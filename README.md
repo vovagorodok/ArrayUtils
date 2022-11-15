@@ -2,7 +2,7 @@
 
 Allows constexpr construction by: \
 Function `makeArray()` to create array of types with complex constructions. \
-Function `makeArrayOfPairs()` to create mapped arrays.
+Function `makePairArray()` to create mapped arrays.
 
 Allows search: \
 Function `find()` to find pair in array using on key.

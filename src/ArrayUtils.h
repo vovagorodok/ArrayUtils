@@ -10,12 +10,12 @@ constexpr auto makeArray(Converter&& converter, OtherT&&... args)
 }
 
 template<typename Key, typename Value, std::size_t N>
-using ArrayOfPairs = std::array<std::pair<Key, Value>, N>;
+using PairArray = std::array<std::pair<Key, Value>, N>;
 
 template<typename Key, typename Value, std::size_t N>
-constexpr auto makeArrayOfPairs(std::initializer_list<std::pair<Key, Value>> list)
+constexpr auto makePairArray(std::initializer_list<std::pair<Key, Value>> list)
 {
-    ArrayOfPairs<Key, Value, N> res;
+    PairArray<Key, Value, N> res;
     size_t pos = 0;
     for (const auto& el: list)
     {
@@ -26,7 +26,7 @@ constexpr auto makeArrayOfPairs(std::initializer_list<std::pair<Key, Value>> lis
 }
 
 template<typename Key, typename Value, std::size_t N>
-constexpr auto find(ArrayOfPairs<Key, Value, N>& arr, const Key& key)
+constexpr auto find(PairArray<Key, Value, N>& arr, const Key& key)
 {
     for (auto it = arr.begin(); it != arr.end(); it++)
         if (it->first == key)
@@ -35,7 +35,7 @@ constexpr auto find(ArrayOfPairs<Key, Value, N>& arr, const Key& key)
 }
 
 template<typename Key, typename Value, std::size_t N>
-constexpr auto find(const ArrayOfPairs<Key, Value, N>& arr, const Key& key)
+constexpr auto find(const PairArray<Key, Value, N>& arr, const Key& key)
 {
     for (auto it = arr.begin(); it != arr.end(); it++)
         if (it->first == key)
