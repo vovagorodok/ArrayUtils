@@ -7,7 +7,7 @@ Function `makePairArray()` to create mapped arrays.
 Allows search: \
 Function `find()` to find pair in array using on key.
 
-Array of pairs advanteges:
+Pair array advanteges:
 - Zero memory overhead and the same size as `std::array`
 - Can be stored on static mamory or stack
 - Linear search is ~3x faster than `std::maps` for small number of elements
