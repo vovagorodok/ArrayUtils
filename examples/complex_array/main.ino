@@ -6,12 +6,12 @@ struct Pin
     uint8_t num;
     uint8_t mode;
 };
-constexpr Pin createPin(uint8_t num)
+constexpr Pin createOutput(uint8_t num)
 {
     return {num, OUTPUT};
 }
 
-auto outputs = makeArray<Pin, 3>(createPin, 2, 4, 5);
+auto outputs = makeArray<Pin, 3>(createOutput, 2, 4, 5);
 
 void setup() {
     Serial.begin(115200);
