@@ -5,7 +5,7 @@ Function `makeArray()` to create array of types with complex constructions. \
 Function `makeArrayOfPairs()` to create mapped arrays.
 
 Allows search: \
-Function `find()` to find in array of pairs.
+Function `find()` to find pair in array using on key.
 
 Array of pairs advanteges:
 - Zero memory overhead and the same size as `std::array`
