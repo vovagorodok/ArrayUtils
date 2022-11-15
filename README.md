@@ -17,4 +17,4 @@ Recommended to replace `std::map` when number of elements is less than 15.
 When number of elements is greater than 1000 `std::unordered_map` is recommended.
 Prepared tests: https://quick-bench.com/q/4NqPWuZZISW9XAKvhiQQJAIvGLc
 
-Library requires STL and c++14
+Library requires STL and c++14 or greater.
