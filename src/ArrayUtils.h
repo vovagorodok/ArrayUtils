@@ -24,11 +24,11 @@ constexpr auto makePairArray(std::initializer_list<std::pair<Key, Value>> list)
 template<typename Key, typename Value, std::size_t N>
 constexpr auto find(PairArray<Key, Value, N>& arr, const Key& key)
 {
-    return std::find_if(arr.begin(), arr.end(), [&key](const auto& pair){  return pair.first == key; });
+    return std::find_if(arr.begin(), arr.end(), [&key](const auto& pair){ return pair.first == key; });
 }
 
 template<typename Key, typename Value, std::size_t N>
 constexpr auto find(const PairArray<Key, Value, N>& arr, const Key& key)
 {
-    return std::find_if(arr.begin(), arr.end(), [&key](const auto& pair){  return pair.first == key; });
+    return std::find_if(arr.begin(), arr.end(), [&key](const auto& pair){ return pair.first == key; });
 }
