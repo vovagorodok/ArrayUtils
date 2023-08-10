@@ -1,13 +1,12 @@
 #include <ArrayUtils.h>
 #include <Arduino.h>
 
-struct Pin
-{
+struct Pin {
     uint8_t num;
     uint8_t mode;
 };
-constexpr Pin createOutput(uint8_t num)
-{
+
+constexpr Pin createOutput(uint8_t num) {
     return {num, OUTPUT};
 }
 
