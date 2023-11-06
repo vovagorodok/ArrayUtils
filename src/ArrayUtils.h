@@ -3,6 +3,12 @@
 #include <utility>
 #include <algorithm>
 
+template<typename... OtherT>
+constexpr auto countSize(OtherT... args)
+{
+    return sizeof...(args);
+}
+
 template<typename T, std::size_t N, typename Converter, typename... OtherT>
 constexpr auto makeArray(Converter&& converter, OtherT&&... args)
 {

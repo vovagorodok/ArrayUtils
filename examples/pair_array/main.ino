@@ -5,6 +5,8 @@ auto pairArray = makePairArray<int, int, 3>({{1, 2}, {3, 4}, {5, 6}});
 
 void setup() {
     Serial.begin(115200);
+    while (not Serial);
+
     for (const auto& el : pairArray)
         Serial.println(el.first);
 

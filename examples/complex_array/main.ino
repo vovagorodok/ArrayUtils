@@ -14,6 +14,8 @@ auto outputs = makeArray<Pin, 3>(createOutput, 2, 4, 5);
 
 void setup() {
     Serial.begin(115200);
+    while (not Serial);
+
     for (const Pin& out : outputs)
     {
         Serial.println(out.num);
