@@ -18,3 +18,16 @@ When number of elements is greater than 1000 `std::unordered_map` is recommended
 More about tests in TESTS.md.
 
 Library requires STL with c++14 or greater.
+For PlatformIO. Add to `platformio.ini`:
+```
+build_flags =
+	-std=c++14
+	-std=gnu++14
+build_unflags =
+	-std=gnu++11
+```
+
+For Arduino IDE. At boards package installation folder create `platform.local.txt`:
+```
+compiler.cpp.extra_flags=-std=c++14
+```
