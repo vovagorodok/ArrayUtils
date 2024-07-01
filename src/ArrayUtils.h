@@ -13,7 +13,7 @@ template<typename T, std::size_t N, typename Converter, typename... OtherT>
 constexpr auto makeArray(Converter&& converter, OtherT&&... args)
 {
     std::array<T, N> res{converter(args)...};
-    return res; 
+    return res;
 }
 
 template<typename Key, typename Value, std::size_t N>
@@ -24,7 +24,7 @@ constexpr auto makePairArray(std::initializer_list<std::pair<Key, Value>> list)
 {
     PairArray<Key, Value, N> res;
     std::copy(list.begin(), list.end(), res.begin());
-    return res; 
+    return res;
 }
 
 template<typename Key, typename Value, std::size_t N>
