@@ -1,7 +1,5 @@
 #pragma once
 #include <array>
-#include <utility>
-#include <algorithm>
 
 template<typename T, std::size_t N>
 class SmallVector
