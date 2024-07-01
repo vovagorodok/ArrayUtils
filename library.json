@@ -24,7 +24,7 @@
     ],
     "license": "MIT",
     "homepage": "https://github.com/vovagorodok/ArrayUtils",
-    "headers": ["ArrayUtils.h", "SmallMap.h"],
+    "headers": ["ArrayUtils.h", "SmallMap.h", "SmallVector.h"],
     "frameworks": "*",
     "platforms": ["*"]
   }
