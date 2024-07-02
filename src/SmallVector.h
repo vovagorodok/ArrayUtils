@@ -50,6 +50,12 @@ public:
     constexpr auto operator[](std::size_t pos) const {
         return _arr[pos];
     }
+    constexpr auto front() {
+        return _arr.front();
+    }
+    constexpr auto front() const {
+        return _arr.front();
+    }
     constexpr void clear() {
         _size = 0;
     }
