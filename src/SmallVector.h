@@ -17,7 +17,7 @@ public:
     constexpr std::size_t size() const {
         return _size;
     }
-    constexpr std::size_t empty() const {
+    constexpr bool empty() const {
         return !_size;
     }
     constexpr auto begin() {
