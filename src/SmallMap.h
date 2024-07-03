@@ -7,9 +7,9 @@ template<typename Key, typename Value, std::size_t N>
 class SmallMap
 {
 public:
-    constexpr SmallMap() : _arr{} {
+    constexpr SmallMap() : _arr() {
     }
-    constexpr SmallMap(std::initializer_list<std::pair<Key, Value>> list) : _arr{} {
+    constexpr SmallMap(std::initializer_list<std::pair<Key, Value>> list) : _arr() {
         std::copy(list.begin(), list.end(), _arr.begin());
     }
     constexpr std::size_t size() const {

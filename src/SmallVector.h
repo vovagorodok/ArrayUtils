@@ -5,7 +5,7 @@ template<typename T, std::size_t N>
 class SmallVector
 {
 public:
-    constexpr SmallVector() :  _arr{}, _size() {
+    constexpr SmallVector() :  _arr(), _size() {
     }
     template <typename... OtherT>
     constexpr SmallVector(OtherT&&... args) : _arr{args...}, _size(sizeof...(args)) {
