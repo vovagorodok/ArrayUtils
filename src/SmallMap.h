@@ -39,10 +39,10 @@ public:
     constexpr auto findKey(const Key& key) const {
         return std::find_if(_arr.begin(), _arr.end(), [&key](const auto& pair){ return pair.first == key; });
     }
-    constexpr auto findValue(const Key& value) {
+    constexpr auto findValue(const Value& value) {
         return std::find_if(_arr.begin(), _arr.end(), [&value](const auto& pair){ return pair.second == value; });
     }
-    constexpr auto findValue(const Key& value) const {
+    constexpr auto findValue(const Value& value) const {
         return std::find_if(_arr.begin(), _arr.end(), [&value](const auto& pair){ return pair.second == value; });
     }
 
