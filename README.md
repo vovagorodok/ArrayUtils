@@ -8,7 +8,10 @@ Allows search:
 Functions `findKey()`, `find()` to find pair in array using key.  
 Function `findValue()` to find pair in array using value.
 
-Pair array advanteges:
+Array based containers:  
+Classes `SmallVector` and `SmallMap`.
+
+## Pair array advanteges
 - Zero memory overhead and the same size as `std::array`
 - Can be stored on static mamory or stack
 - Linear search is ~3x faster than `std::maps` for small number of elements
