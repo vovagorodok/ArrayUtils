@@ -2,6 +2,7 @@
 #include <array>
 #include <utility>
 #include <algorithm>
+#include <optional>
 
 template<typename Key, typename Value, std::size_t N>
 class SmallMap
@@ -44,6 +45,18 @@ public:
     }
     constexpr auto findByValue(const Value& value) const {
         return std::find_if(_arr.begin(), _arr.end(), [&value](const auto& pair){ return pair.second == value; });
+    }
+    constexpr std::optional<Value> findValueByKey(const Key& key) const {
+        const auto search = findByKey(key);
+        if (search != _arr.end())
+            return search->second;
+        return std::nullopt;
+    }
+    constexpr std::optional<Key> findKeyByValue(const Value& value) const {
+        const auto search = findByValue(value);
+        if (search != _arr.end())
+            return search->first;
+        return std::nullopt;
     }
 
 private:
