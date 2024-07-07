@@ -1,13 +1,15 @@
 # Datatypes (KEYWORD1)
 PairArray KEYWORD1
+SmallVector KEYWORD1
+SmallMap KEYWORD1
 
 # Methods and Functions (KEYWORD2)
 countSize	KEYWORD2
 makeArray	KEYWORD2
 makePairArray	KEYWORD2
 find	KEYWORD2
-findKey	KEYWORD2
-findValue	KEYWORD2
+findByKey	KEYWORD2
+findByValue	KEYWORD2
 
 # Instances (KEYWORD2)
 

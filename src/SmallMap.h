@@ -33,16 +33,16 @@ public:
     constexpr auto find(const Key& key) const {
         return std::find_if(_arr.begin(), _arr.end(), [&key](const auto& pair){ return pair.first == key; });
     }
-    constexpr auto findKey(const Key& key) {
+    constexpr auto findByKey(const Key& key) {
         return std::find_if(_arr.begin(), _arr.end(), [&key](const auto& pair){ return pair.first == key; });
     }
-    constexpr auto findKey(const Key& key) const {
+    constexpr auto findByKey(const Key& key) const {
         return std::find_if(_arr.begin(), _arr.end(), [&key](const auto& pair){ return pair.first == key; });
     }
-    constexpr auto findValue(const Value& value) {
+    constexpr auto findByValue(const Value& value) {
         return std::find_if(_arr.begin(), _arr.end(), [&value](const auto& pair){ return pair.second == value; });
     }
-    constexpr auto findValue(const Value& value) const {
+    constexpr auto findByValue(const Value& value) const {
         return std::find_if(_arr.begin(), _arr.end(), [&value](const auto& pair){ return pair.second == value; });
     }
 

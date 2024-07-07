@@ -40,25 +40,25 @@ constexpr auto find(const PairArray<Key, Value, N>& arr, const Key& key)
 }
 
 template<typename Key, typename Value, std::size_t N>
-constexpr auto findKey(PairArray<Key, Value, N>& arr, const Key& key)
+constexpr auto findByKey(PairArray<Key, Value, N>& arr, const Key& key)
 {
     return std::find_if(arr.begin(), arr.end(), [&key](const auto& pair){ return pair.first == key; });
 }
 
 template<typename Key, typename Value, std::size_t N>
-constexpr auto findKey(const PairArray<Key, Value, N>& arr, const Key& key)
+constexpr auto findByKey(const PairArray<Key, Value, N>& arr, const Key& key)
 {
     return std::find_if(arr.begin(), arr.end(), [&key](const auto& pair){ return pair.first == key; });
 }
 
 template<typename Key, typename Value, std::size_t N>
-constexpr auto findValue(PairArray<Key, Value, N>& arr, const Value& value)
+constexpr auto findByValue(PairArray<Key, Value, N>& arr, const Value& value)
 {
     return std::find_if(arr.begin(), arr.end(), [&value](const auto& pair){ return pair.second == value; });
 }
 
 template<typename Key, typename Value, std::size_t N>
-constexpr auto findValue(const PairArray<Key, Value, N>& arr, const Value& value)
+constexpr auto findByValue(const PairArray<Key, Value, N>& arr, const Value& value)
 {
     return std::find_if(arr.begin(), arr.end(), [&value](const auto& pair){ return pair.second == value; });
 }

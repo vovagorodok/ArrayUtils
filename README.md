@@ -5,8 +5,8 @@ Function `makeArray()` to create array of types with complex constructions.
 Function `makePairArray()` to create mapped arrays.
 
 Allows search:  
-Functions `findKey()`, `find()` to find pair in array using key.  
-Function `findValue()` to find pair in array using value.
+Functions `findByKey()`, `find()` to find pair in array using key.  
+Function `findByValue()` to find pair in array using value.
 
 Array based containers:  
 Classes `SmallVector` and `SmallMap`.
