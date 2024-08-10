@@ -66,15 +66,26 @@ public:
     }
     template <std::size_t OtherN>
     constexpr bool add(const SmallVector<T, OtherN>& other) {
-        if (_size + other.size() > N)
+        return add(other._arr, other.size());
+    }
+    template <std::size_t OtherN>
+    constexpr bool add(const std::array<T, OtherN>& arr) {
+        return add(arr, arr.size());
+    }
+    template <typename OthTerT, std::size_t OtherN>
+    friend class SmallVector;
+ 
+private:
+    template <std::size_t OtherN>
+    constexpr bool add(const std::array<T, OtherN>& arr, std::size_t size) {
+        if (_size + size > N)
             return false;
-        for (std::size_t pos = 0; pos < other.size(); pos++)
-            _arr[_size + pos] = other[pos];
-        _size += other.size();
+        for (std::size_t pos = 0; pos < size; pos++)
+            _arr[_size + pos] = arr[pos];
+        _size += size;
         return true;
     }
 
-private:
     std::array<T, N> _arr;
     std::size_t _size;
 };
