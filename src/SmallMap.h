@@ -58,6 +58,9 @@ public:
             return search->first;
         return std::nullopt;
     }
+    bool operator==(const SmallMap<Key, Value, N>& other) const {
+        return _arr == other._arr;
+    }
 
 private:
     std::array<std::pair<Key, Value>, N> _arr;
