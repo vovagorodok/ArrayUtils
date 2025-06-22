@@ -1,6 +1,6 @@
 {
     "name": "ArrayUtils",
-    "version": "1.2.3",
+    "version": "1.2.4",
     "description": "Helps to create complex arrays and maps as arrays of pairs",
     "keywords": "array, map, pair",
     "repository":
