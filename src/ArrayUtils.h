@@ -12,7 +12,7 @@ constexpr auto countSize(OtherT... args)
 template<typename T, std::size_t N, typename Converter, typename... OtherT>
 constexpr auto makeArray(Converter&& converter, OtherT&&... args)
 {
-    static_assert(N == countSize(args...));
+    static_assert(N == sizeof...(args));
     std::array<T, N> res{converter(args)...};
     return res;
 }
