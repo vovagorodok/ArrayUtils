@@ -10,6 +10,8 @@ class SmallMap
 public:
     constexpr SmallMap() : _arr() {
     }
+    constexpr SmallMap(std::array<std::pair<Key, Value>, N> arr) : _arr(arr) {
+    }
     constexpr SmallMap(std::initializer_list<std::pair<Key, Value>> list) : _arr() {
         std::copy(list.begin(), list.end(), _arr.begin());
     }
