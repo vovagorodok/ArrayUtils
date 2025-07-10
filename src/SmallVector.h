@@ -10,7 +10,7 @@ public:
     template <typename... OtherT>
     constexpr SmallVector(OtherT&&... args) : _arr{args...}, _size(sizeof...(args)) {
     }
-    constexpr std::size_t maxSize() const {
+    constexpr std::size_t capacity() const {
         return N;
     }
     constexpr std::size_t size() const {
@@ -18,6 +18,9 @@ public:
     }
     constexpr bool empty() const {
         return !_size;
+    }
+    constexpr bool full() const {
+        return _size >= N;
     }
     constexpr auto begin() {
         return _arr.begin();
