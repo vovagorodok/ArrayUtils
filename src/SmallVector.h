@@ -13,6 +13,9 @@ public:
     constexpr std::size_t capacity() const {
         return N;
     }
+    constexpr std::size_t available() const {
+        return N - _size;
+    }
     constexpr std::size_t size() const {
         return _size;
     }
