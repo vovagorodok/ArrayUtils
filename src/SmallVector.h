@@ -63,19 +63,19 @@ public:
     }
     template <typename... Args>
     constexpr bool emplace(Args&&... args) {
-        if (_size >= N)
+        if (full())
             return false;
         _arr[_size++] = T(std::forward<Args>(args)...);
         return true;
     }
     constexpr bool push(const T& value) {
-        if (_size >= N)
+        if (full())
             return false;
         _arr[_size++] = value;
         return true;
     }
     constexpr bool push(T&& value) {
-        if (_size >= N)
+        if (full())
             return false;
         _arr[_size++] = std::move(value);
         return true;
