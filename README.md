@@ -9,7 +9,7 @@ Functions `findByKey()`, `find()` to find pair in array using key.
 Function `findByValue()` to find pair in array using value.
 
 Array based containers:  
-Classes `SmallVector` and `SmallMap`.
+Classes `SmallMap`, `SmallVector` and `SmallQueue`.
 
 ## Pair array advanteges
 - Zero memory overhead and the same size as `std::array`

@@ -1,8 +1,8 @@
 {
     "name": "ArrayUtils",
-    "version": "1.2.5",
+    "version": "1.3.0",
     "description": "Helps to create complex arrays and maps as arrays of pairs",
-    "keywords": "array, map, pair",
+    "keywords": "array, map, vector, queue, pair",
     "repository":
     {
       "type": "git",
@@ -24,7 +24,7 @@
     ],
     "license": "MIT",
     "homepage": "https://github.com/vovagorodok/ArrayUtils",
-    "headers": ["ArrayUtils.h", "SmallMap.h", "SmallVector.h"],
+    "headers": ["ArrayUtils.h", "SmallMap.h", "SmallVector.h", "SmallQueue.h"],
     "frameworks": "*",
     "platforms": ["*"]
   }
