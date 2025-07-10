@@ -1,5 +1,6 @@
 #pragma once
 #include <array>
+#include <type_traits>
 
 template<typename T, std::size_t N>
 class SmallQueue
@@ -29,8 +30,20 @@ public:
         return _arr[_head];
     }
     constexpr void clear() {
+        if constexpr (std::is_trivially_destructible_v<T>) {
+            clearFast();
+        } else {
+            clearSafe();
+        }
+    }
+    constexpr void clearFast() {
+        _head = 0;
+        _tail = 0;
+        _size = 0;
+    }
+    constexpr void clearSafe() {
         while (!empty())
-            popImpl();
+            popSafeImpl();
     }
     template <typename... Args>
     constexpr bool emplace(Args&&... args) {
@@ -58,17 +71,33 @@ public:
         return true;
     }
     constexpr bool pop() {
+        if constexpr (std::is_trivially_destructible_v<T>) {
+            return popFast();
+        } else {
+            return popSafe();
+        }
+    }
+    constexpr bool popFast() {
         if (empty())
             return false;
-        popImpl();
+        popFastImpl();
+        return true;
+    }
+    constexpr bool popSafe() {
+        if (empty())
+            return false;
+        popSafeImpl();
         return true;
     }
  
 private:
-    constexpr void popImpl() {
-        _arr[_head] = T{};
+    constexpr void popFastImpl() {
         incrementHead();
         _size--;
+    }
+    constexpr void popSafeImpl() {
+        _arr[_head] = T{};
+        popFastImpl();
     }
     constexpr void incrementHead() {
         _head++;

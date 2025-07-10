@@ -1,5 +1,6 @@
 #pragma once
 #include <array>
+#include <type_traits>
 
 template<typename T, std::size_t N>
 class SmallVector
@@ -62,6 +63,18 @@ public:
         return _arr.front();
     }
     constexpr void clear() {
+        if constexpr (std::is_trivially_destructible_v<T>) {
+            clearFast();
+        } else {
+            clearSafe();
+        }
+    }
+    constexpr void clearFast() {
+        _size = 0;
+    }
+    constexpr void clearSafe() {
+        for (std::size_t pos = 0; pos < _size; pos++)
+            _arr[pos] = T{};
         _size = 0;
     }
     template <typename... Args>
