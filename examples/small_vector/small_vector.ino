@@ -8,12 +8,12 @@ void setup() {
     Serial.begin(115200);
     while (not Serial);
 
-    smallVector.add(4);
+    smallVector.push(4);
     for (const auto& el : smallVector)
         Serial.println(el);
 
     Serial.println();
-    smallVector.add(otherVector);
+    smallVector.push(otherVector);
     for (const auto& el : smallVector)
         Serial.println(el);
 }

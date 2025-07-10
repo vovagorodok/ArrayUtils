@@ -58,26 +58,39 @@ public:
     constexpr void clear() {
         _size = 0;
     }
-    constexpr bool add(const T& value) {
+    template <typename... Args>
+    constexpr bool emplace(Args&&... args) {
+        if (_size >= N)
+            return false;
+        _arr[_size++] = T(std::forward<Args>(args)...);
+        return true;
+    }
+    constexpr bool push(const T& value) {
         if (_size >= N)
             return false;
         _arr[_size++] = value;
         return true;
     }
-    template <std::size_t OtherN>
-    constexpr bool add(const SmallVector<T, OtherN>& other) {
-        return add(other._arr, other.size());
+    constexpr bool push(T&& value) {
+        if (_size >= N)
+            return false;
+        _arr[_size++] = std::move(value);
+        return true;
     }
     template <std::size_t OtherN>
-    constexpr bool add(const std::array<T, OtherN>& arr) {
-        return add(arr, arr.size());
+    constexpr bool push(const SmallVector<T, OtherN>& other) {
+        return push(other._arr, other.size());
+    }
+    template <std::size_t OtherN>
+    constexpr bool push(const std::array<T, OtherN>& arr) {
+        return push(arr, arr.size());
     }
     template <typename OthTerT, std::size_t OtherN>
     friend class SmallVector;
  
 private:
     template <std::size_t OtherN>
-    constexpr bool add(const std::array<T, OtherN>& arr, std::size_t size) {
+    constexpr bool push(const std::array<T, OtherN>& arr, std::size_t size) {
         if (_size + size > N)
             return false;
         for (std::size_t pos = 0; pos < size; pos++)
