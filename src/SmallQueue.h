@@ -76,12 +76,12 @@ public:
         return _arr[head];
     }
     constexpr auto popSafe() {
-        auto head = _head;
+        auto value = std::move(_arr[_head]);
         if (!empty()) {
             _arr[_head] = T{};
             decrementSize();
         }
-        return _arr[head];
+        return value;
     }
  
 private:
