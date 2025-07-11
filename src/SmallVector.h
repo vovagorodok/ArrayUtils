@@ -104,7 +104,7 @@ public:
     constexpr bool push(const std::array<T, OtherN>& arr) {
         return push(arr, arr.size());
     }
-    template <typename OthTerT, std::size_t OtherN>
+    template <typename OtherT, std::size_t OtherN>
     friend class SmallVector;
  
 private:
