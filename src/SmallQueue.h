@@ -23,12 +23,6 @@ public:
     constexpr bool full() const {
         return _size >= N;
     }
-    constexpr auto front() {
-        return _arr[_head];
-    }
-    constexpr auto front() const {
-        return _arr[_head];
-    }
     constexpr void clear() {
         if constexpr (std::is_trivially_destructible_v<T>) {
             clearFast();
@@ -43,71 +37,66 @@ public:
     }
     constexpr void clearSafe() {
         while (!empty())
-            popSafeImpl();
+            popSafe();
     }
     template <typename... Args>
     constexpr bool emplace(Args&&... args) {
         if (full())
             return false;
         _arr[_tail] = T(std::forward<Args>(args)...);
-        incrementTail();
-        _size++;
+        incrementSize();
         return true;
     }
     constexpr bool push(const T& value) {
         if (full())
             return false;
         _arr[_tail] = value;
-        incrementTail();
-        _size++;   
+        incrementSize();
         return true;
     }
     constexpr bool push(T&& value) {
         if (full())
             return false;
         _arr[_tail] = std::move(value);
-        incrementTail();
-        _size++;
+        incrementSize();
         return true;
     }
-    constexpr bool pop() {
+    constexpr auto pop() {
         if constexpr (std::is_trivially_destructible_v<T>) {
             return popFast();
         } else {
             return popSafe();
         }
     }
-    constexpr bool popFast() {
-        if (empty())
-            return false;
-        popFastImpl();
-        return true;
+    constexpr auto popFast() {
+        auto head = _head;
+        if (!empty()) {
+            decrementSize();
+        }
+        return _arr[head];
     }
-    constexpr bool popSafe() {
-        if (empty())
-            return false;
-        popSafeImpl();
-        return true;
+    constexpr auto popSafe() {
+        auto head = _head;
+        if (!empty()) {
+            _arr[_head] = T{};
+            decrementSize();
+        }
+        return _arr[head];
     }
  
 private:
-    constexpr void popFastImpl() {
-        incrementHead();
+    constexpr void decrementSize() {
+        increment(_head);
         _size--;
     }
-    constexpr void popSafeImpl() {
-        _arr[_head] = T{};
-        popFastImpl();
+    constexpr void incrementSize() {
+        increment(_tail);
+        _size++;
     }
-    constexpr void incrementHead() {
-        _head++;
-        if (_head == N)
-            _head = 0;
-    }
-    constexpr void incrementTail() {
-        _tail++;
-        if (_tail == N)
-            _tail = 0;
+    constexpr void increment(std::size_t& index) {
+        index++;
+        if (index == N)
+            index = 0;
     }
 
     std::array<T, N> _arr;

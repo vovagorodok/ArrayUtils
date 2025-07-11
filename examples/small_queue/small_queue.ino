@@ -13,8 +13,7 @@ void setup() {
     queue.pop();
 
     while (!queue.empty()) {
-        Serial.println(queue.front());
-        queue.pop();
+        Serial.println(queue.pop());
     }
 }
 
