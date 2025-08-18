@@ -98,26 +98,24 @@ public:
     }
     template <std::size_t OtherN>
     constexpr bool push(const SmallVector<T, OtherN>& other) {
-        return push(other._arr, other.size());
+        return push(other._arr.data(), other.size());
     }
     template <std::size_t OtherN>
     constexpr bool push(const std::array<T, OtherN>& arr) {
-        return push(arr, arr.size());
+        return push(arr.data(), arr.size());
+    }
+    constexpr bool push(const T* ptr, std::size_t size) {
+        if (_size + size > N)
+            return false;
+        for (std::size_t pos = 0; pos < size; pos++)
+            _arr[_size + pos] = ptr[pos];
+        _size += size;
+        return true;
     }
     template <typename OtherT, std::size_t OtherN>
     friend class SmallVector;
  
 private:
-    template <std::size_t OtherN>
-    constexpr bool push(const std::array<T, OtherN>& arr, std::size_t size) {
-        if (_size + size > N)
-            return false;
-        for (std::size_t pos = 0; pos < size; pos++)
-            _arr[_size + pos] = arr[pos];
-        _size += size;
-        return true;
-    }
-
     std::array<T, N> _arr;
     std::size_t _size;
 };
