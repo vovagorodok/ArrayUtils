@@ -2,6 +2,7 @@
 PairArray KEYWORD1
 SmallVector KEYWORD1
 SmallMap KEYWORD1
+SmallQueue KEYWORD1
 
 # Methods and Functions (KEYWORD2)
 countSize	KEYWORD2
