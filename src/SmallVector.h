@@ -112,6 +112,9 @@ public:
         _size += size;
         return true;
     }
+    constexpr bool operator==(const SmallVector& other) const {
+        return _size == other._size and _arr == other._arr;
+    }
     template <typename OtherT, std::size_t OtherN>
     friend class SmallVector;
  
