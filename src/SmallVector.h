@@ -9,7 +9,9 @@ public:
     constexpr SmallVector() :  _arr(), _size() {
     }
     template <typename... OtherT>
-    constexpr SmallVector(OtherT&&... args) : _arr{args...}, _size(sizeof...(args)) {
+    constexpr SmallVector(OtherT&&... args) : _arr(), _size() {
+        static_assert(sizeof...(args) <= N);
+        ((_arr[_size++] = T(std::forward<OtherT>(args))), ...);
     }
     constexpr std::size_t capacity() const {
         return N;
