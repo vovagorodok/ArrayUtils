@@ -3,7 +3,8 @@
 
 void setup() {
     Serial.begin(115200);
-    while (not Serial);
+    while (not Serial)
+        ;
 
     Serial.println(countSize(5, 6, 7, 8));
 }

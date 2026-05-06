@@ -2,27 +2,19 @@
 #include <array>
 #include <type_traits>
 
-template<typename T, std::size_t N>
-class SmallQueue
-{
-public:
-    constexpr SmallQueue() :  _arr(), _head(), _tail(), _size() {
-    }
-    constexpr std::size_t capacity() const {
-        return N;
-    }
-    constexpr std::size_t available() const {
-        return N - _size;
-    }
-    constexpr std::size_t size() const {
-        return _size;
-    }
-    constexpr bool empty() const {
-        return !_size;
-    }
-    constexpr bool full() const {
-        return _size >= N;
-    }
+template <typename T, std::size_t N>
+class SmallQueue {
+ public:
+    constexpr SmallQueue() :
+        _arr(),
+        _head(),
+        _tail(),
+        _size() {}
+    constexpr std::size_t capacity() const { return N; }
+    constexpr std::size_t available() const { return N - _size; }
+    constexpr std::size_t size() const { return _size; }
+    constexpr bool empty() const { return !_size; }
+    constexpr bool full() const { return _size >= N; }
     constexpr void clear() {
         if constexpr (std::is_trivially_destructible_v<T>) {
             clearFast();
@@ -36,27 +28,31 @@ public:
         _size = 0;
     }
     constexpr void clearSafe() {
-        while (!empty())
+        while (!empty()) {
             popSafe();
+        }
     }
     template <typename... Args>
     constexpr bool emplace(Args&&... args) {
-        if (full())
+        if (full()) {
             return false;
+        }
         _arr[_tail] = T(std::forward<Args>(args)...);
         incrementSize();
         return true;
     }
     constexpr bool push(const T& value) {
-        if (full())
+        if (full()) {
             return false;
+        }
         _arr[_tail] = value;
         incrementSize();
         return true;
     }
     constexpr bool push(T&& value) {
-        if (full())
+        if (full()) {
             return false;
+        }
         _arr[_tail] = std::move(value);
         incrementSize();
         return true;
@@ -83,8 +79,8 @@ public:
         }
         return value;
     }
- 
-private:
+
+ private:
     constexpr void decrementSize() {
         increment(_head);
         _size--;
@@ -95,8 +91,9 @@ private:
     }
     constexpr void increment(std::size_t& index) {
         index++;
-        if (index == N)
+        if (index == N) {
             index = 0;
+        }
     }
 
     std::array<T, N> _arr;

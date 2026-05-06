@@ -6,16 +6,19 @@ SmallVector<int, 2> other{8, 9};
 
 void setup() {
     Serial.begin(115200);
-    while (not Serial);
+    while (not Serial)
+        ;
 
     vector.push(4);
-    for (const auto& el : vector)
+    for (const auto& el : vector) {
         Serial.println(el);
+    }
 
     Serial.println();
     vector.push(other);
-    for (const auto& el : vector)
+    for (const auto& el : vector) {
         Serial.println(el);
+    }
 }
 
 void loop() {

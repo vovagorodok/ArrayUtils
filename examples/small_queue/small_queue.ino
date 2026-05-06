@@ -5,7 +5,8 @@ SmallQueue<int, 3> queue{};
 
 void setup() {
     Serial.begin(115200);
-    while (not Serial);
+    while (not Serial)
+        ;
 
     queue.push(1);
     queue.push(2);
