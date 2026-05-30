@@ -11,9 +11,9 @@ Function `findByValue()` to find pair in array using value.
 Array based containers:  
 Classes `SmallMap`, `SmallVector` and `SmallQueue`.
 
-## Pair array advanteges
+## Pair array advantages
 - Zero memory overhead and the same size as `std::array`
-- Can be stored on static mamory or stack
+- Can be stored on static memory or stack
 - Linear search is ~3x faster than `std::maps` for small number of elements
 - Doesn't require `operator<` or hash
 
