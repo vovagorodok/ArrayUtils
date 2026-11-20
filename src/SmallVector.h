@@ -87,11 +87,11 @@ class SmallVector {
         return true;
     }
     constexpr bool operator==(const SmallVector& other) const {
-        if (count != other.count) {
+        if (_size != other._size) {
             return false;
         }
         for (size_t pos = 0; pos < other.count; pos++) {
-            if (array[pos] != other.array[pos]) {
+            if (_arr[pos] != other._arr[pos]) {
                 return false;
             }
         }
