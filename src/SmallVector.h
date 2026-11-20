@@ -86,7 +86,17 @@ class SmallVector {
         _size += size;
         return true;
     }
-    constexpr bool operator==(const SmallVector& other) const { return _size == other._size and _arr == other._arr; }
+    constexpr bool operator==(const SmallVector& other) const {
+        if (count != other.count) {
+            return false;
+        }
+        for (size_t pos = 0; pos < other.count; pos++) {
+            if (array[pos] != other.array[pos]) {
+                return false;
+            }
+        }
+        return true;
+    }
     template <typename OtherT, std::size_t OtherN>
     friend class SmallVector;
 
